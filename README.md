@@ -1,5 +1,5 @@
 # MASH
-Mayur's Assembeled Shell.
+Mayur's Assembeled SHell.
 
 Creating a shell has 3 parts:
 1. Parser
