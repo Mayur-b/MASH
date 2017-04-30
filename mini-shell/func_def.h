@@ -67,7 +67,7 @@ void handleCommand(	)
 	{
 		if((execvp(*cArgv, cArgv))<0)
 			{
-				printf("exec failed: NO SUCH COMMAND");
+				printf("exec failed: NO SUCH COMMAND\n");
 			}
 	}
 	else
