@@ -21,9 +21,9 @@ int main(int argc, char *argv[], char *envp[])
 						break;
 
 			default  :	getCommand();
-						handleCommand();
-						prompt(); 
-						break;
+					handleCommand();
+					prompt(); 
+					break;
 		}
 		
 	}
