@@ -1,5 +1,5 @@
 #include "definitions.h"
-//c#include "myComm_def.h"
+//#include "myComm_def.h"
 #include "func_def.h"
 
 
@@ -16,9 +16,9 @@ int main(int argc, char *argv[], char *envp[])
 		switch(userInput)
 		{
 			case '\n':	prompt();
-						break;
+					break;
 			case 27  :	exit(0);
-						break;
+					break;
 
 			default  :	getCommand();
 					handleCommand();
