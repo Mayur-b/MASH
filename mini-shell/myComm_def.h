@@ -70,23 +70,70 @@ int mycp(int argc, char** argv)
 	return 0;
 }
 
-int myls(int argc, char* argv[])
-{
-    DIR *mydir;
-    struct dirent *myfile;
-    struct stat mystat;
-
-    char buf[512];
-    mydir = opendir(argv[1]);
-    while((myfile = readdir(mydir)) != NULL)
-    {
-        sprintf(buf, "%s/%s", argv[1], myfile->d_name);
-        stat(buf, &mystat);
-        printf("%zu",mystat.st_size);
-        printf(" %s\n", myfile->d_name);
+#define RESET_COLOR "\e[m" 
+#define GREEN "\e[32;1m" 
+#define BLUE "\e[34;1m" 
+  
+  
+ int myls(int argc, char **argv) 
+ { 
+    char *cwd = NULL; 
+    DIR *dp = NULL; 
+    struct dirent *dptr = NULL; 
+    unsigned int count = 0; 
+  
+    cwd = getenv("PWD"); 
+    if(NULL == cwd) 
+    { 
+        printf("\n ERROR : Could not get the working directory\n"); 
+        return -1; 
     }
-    closedir(mydir);
-}
+    
+    //check if no directory argument is given, then load current working directory, otherwise use the argument mentioned
+    if(argc==1) 
+        dp = opendir(cwd);       
+    else 
+        dp = opendir(argv[1]);
+    
+
+    if(NULL == dp) 
+    { 
+        printf("\n ERROR : Could not open the working directory\n"); 
+        return -1; 
+    } 
+   
+    for(count = 0; NULL != (dptr = readdir(dp)); count++) 
+    { 
+        if(dptr->d_name[0] != '.') 
+        { 
+            // Check if the file is executable 
+            if(!access(dptr->d_name,X_OK)) 
+            { 
+                int fd = -1; 
+                struct stat st; 
+  
+                fd = open(dptr->d_name, O_RDONLY, 0); 
+                if(-1 == fd) 
+                { 
+                    printf("\n Opening file/Directory failed\n"); 
+                    return -1; 
+                } 
+                 
+                fstat(fd, &st); 
+                if(S_ISDIR(st.st_mode)) // Check if it actaully was a directory with execute  permissions on it.  
+                    printf(BLUE"%s   "RESET_COLOR,dptr->d_name); // If it was a directory, print it in Blue
+                else 
+                    printf(GREEN"%s   "RESET_COLOR,dptr->d_name); // If it was a normal executable Print it in green 
+                close(fd); 
+            } 
+            else 
+                printf("%s   ",dptr->d_name); // No executable flag ON Print it in black(default) 
+        } 
+    } 
+    printf("\n"); 
+  
+    return 0; 
+ }
 
 int mymv(int argc, char** argv)
 {
@@ -264,4 +311,10 @@ int slink(int argc, char** argv)
 	}
 	
 return 0;
+}
+
+int myclear(void)
+{
+    printf("\033[H\033[2J");
+    return 0;
 }
