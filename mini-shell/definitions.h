@@ -15,12 +15,14 @@
 
 
 typedef void (*sighandler_t)(int);
+char *cwd;
+
 static char userInput = '\0';
 static char buffer[BUFFER_MAX_LENGTH];
 static int bufferChars = 0;
-
 static int cArgc=0;
 static char *cArgv[10];
+static int helpFlag=0;
 
 int mycat(int argc, char** argv);
 int mycp(int argc, char** argv);
@@ -38,3 +40,4 @@ void getCommand();
 void handleCommand();
 void fillCommand();
 void emptyCommand();
+void handleRedirection();
