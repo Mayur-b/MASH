@@ -22,12 +22,13 @@ Room for improvemnt:
 * Implementing more user-made commands
 
 User-Made Commands Implemeneted so far:
-1. ls
-2. cat
-3. cp
-4. mv
-5. rm
-6. touch
-7. slink (to create soft links)
-8. rdlink (to figure out the path trail to the origial file)
-9. clear
+ 1. ls
+ 2. cat
+ 3. cp
+ 4. mv
+ 5. rm
+ 6. touch
+ 7. slink (to create soft links)
+ 8. rdlink (to figure out the path trail to the origial file)
+ 9. clear
+10. mkdir
