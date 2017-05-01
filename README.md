@@ -13,10 +13,10 @@ Subsystems would be a part of the imprvement for the shell.
 What it does:
 * Mini-shell to execute system commands.
 * Invokes user-made commands with arguements from CWD.
+* Redirection
 
 Room for improvemnt:
 * Piping
-* Redirection
 * Arrow and Tab keys (eg. up arrow key should bring the previous used commands, tab should complete the filenames from CWD)
 * Handling more signals
 * Implementing more user-made commands
@@ -30,3 +30,4 @@ User-Made Commands Implemeneted so far:
 6. touch
 7. slink (to create soft links)
 8. rdlink (to figure out the path trail to the origial file)
+9. clear
