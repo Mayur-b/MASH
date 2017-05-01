@@ -15,9 +15,9 @@ void help()
 {
 	printf("\nHelp Menu\nPress [ESC] to quit.\n");
 	printf("Limit to command is 10 words.\n");
-	printf("This shell can handle Redirection.\n");
+	printf("This shell can handle Redirection. (no piplining yet)\n");
 	printf("List by available user-implemented commands:\n");
-	printf("1. mycat\n2. myclear\n3. mycp\n4. myls\n5. mymv\n6. mytouch\n7. myrm\n9. rdlink\n10. slink\n");
+	printf("1. mycat\n2. myclear\n3. mycp\n4. myls\n5. mymv\n6. mytouch\n7. myrm\n8. mymkdir\n9. rdlink\n10. slink\n");
 	
 }
 
